@@ -57,4 +57,9 @@ namespace MobileDevice
             set { this.hoursTalk = value; }
         }
     }
+
+    public enum BatteryType
+    {
+        LiIon, NiMH, NiCd
+    }
 }
