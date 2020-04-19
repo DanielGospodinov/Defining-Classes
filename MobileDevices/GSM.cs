@@ -15,40 +15,38 @@ namespace MobileDevice
         private Display display;
         private Battery battery;
 
+        private static readonly GSM iPhone4S = new GSM("iPhone 4S", "Apple", 1200.00, "Mimi",new Battery(BatteryType.NiMH), new Display(3.5, "16M"));
+
+        //Constructors
         public GSM(string model, string manufacturer)
         {
             this.model = model;
             this.manufacturer = manufacturer;
             this.price = 0.0d;
             this.owner = String.Empty;
-            battery.Model = String.Empty;
-            battery.HoursIdle = 0.0d;
-            battery.HoursTalk = 0.0d;
-            display.NumberOfColors = 0;
-            display.Size = 0.0d;
         }
 
-        public GSM(string model, string manufacturer, double price)
+        public GSM(string model, string manufacturer, double price, Battery battery, Display display)
         {
             this.model = model;
             this.manufacturer = manufacturer;
             this.price = price;
             this.owner = String.Empty;
-            battery.Model = String.Empty;
-            battery.HoursIdle = 0.0d;
-            battery.HoursTalk = 0.0d;
+            this.battery = battery;
+            this.display = display;
         }
 
-        public GSM(string model, string manufacturer, double price, string owner)
+        public GSM(string model, string manufacturer, double price, string owner, Battery battery, Display display)
         {
             this.model = model;
             this.manufacturer = manufacturer;
             this.price = price;
             this.owner = owner;
-            battery.Model = String.Empty;
-            battery.HoursIdle = 0.0d;
-            battery.HoursTalk = 0.0d;
+            this.battery = battery;
+            this.display = display;
         }
+
+        //Properties
         public string Model
         {
             get { return this.model; }
@@ -72,12 +70,17 @@ namespace MobileDevice
             get { return this.owner; }
             set { this.owner = value; }
         }
+        public static GSM IPhone4S
+        {
+            get { return iPhone4S; }
+        }
 
+        //override ToString()
         public override string ToString()
         {
-            string result = String.Format("Model : {0} /nManufacturer: {1} /nPrice: {2} /nOwner: {3} /nBattery Model: {4}" +
-                "Battery hours Idle: {5} /nBattery Hours Talk: {6} /nDisplay Size: {7} /nDisplay Colors: ",this.model,this.manufacturer,
-                this.price,this.owner,battery.Model,battery.HoursIdle,battery.HoursTalk,display.Size,display.Size);
+            string result = String.Format("Model : {0}\n" + "Manufacturer: {1}\n" + "Price: {2} lv\n" + "Owner: {3}\n" +
+                "Battery Model: {4}\n" + "Display size: {5}\"\n" + "Number of collors: {6}",this.model,this.manufacturer,
+                this.price,this.owner,battery.Model,display.Size,display.NumberOfColors);
 
             return result;
 

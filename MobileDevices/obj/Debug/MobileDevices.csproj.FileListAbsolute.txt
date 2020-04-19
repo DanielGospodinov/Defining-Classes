@@ -1,0 +1,7 @@
+C:\Users\dan13\OneDrive\Работен плот\C# Лекции\12\Defining-Classes-Homework\MobileDevices\Defining-Classes\MobileDevices\obj\Debug\MobileDevices.csprojAssemblyReference.cache
+C:\Users\dan13\OneDrive\Работен плот\C# Лекции\12\Defining-Classes-Homework\MobileDevices\Defining-Classes\MobileDevices\obj\Debug\MobileDevices.csproj.CoreCompileInputs.cache
+C:\Users\dan13\OneDrive\Работен плот\C# Лекции\12\Defining-Classes-Homework\MobileDevices\Defining-Classes\MobileDevices\bin\Debug\MobileDevices.exe.config
+C:\Users\dan13\OneDrive\Работен плот\C# Лекции\12\Defining-Classes-Homework\MobileDevices\Defining-Classes\MobileDevices\bin\Debug\MobileDevices.exe
+C:\Users\dan13\OneDrive\Работен плот\C# Лекции\12\Defining-Classes-Homework\MobileDevices\Defining-Classes\MobileDevices\bin\Debug\MobileDevices.pdb
+C:\Users\dan13\OneDrive\Работен плот\C# Лекции\12\Defining-Classes-Homework\MobileDevices\Defining-Classes\MobileDevices\obj\Debug\MobileDevices.exe
+C:\Users\dan13\OneDrive\Работен плот\C# Лекции\12\Defining-Classes-Homework\MobileDevices\Defining-Classes\MobileDevices\obj\Debug\MobileDevices.pdb

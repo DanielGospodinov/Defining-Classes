@@ -8,43 +8,45 @@ namespace MobileDevice
 {
     class Battery
     {
-        private string model;
+        private BatteryType model;
         private double hoursIdle;
         private double hoursTalk;
 
+        //Constructors
         public Battery()
         {
-            this.model = String.Empty;
+            this.model = 0;
             this.hoursIdle = 0.0D;
             this.hoursTalk = 0.0D;
         }
 
-        public Battery(string model)
+        public Battery(BatteryType model)
         {
             this.model = model;
             this.hoursIdle = 0.0d;
             this.hoursTalk = 0.0d;
         }
 
-        public Battery(string model, double hoursIdle)
+        public Battery(BatteryType model, double hoursIdle)
         {
             this.model = model;
             this.hoursIdle = hoursIdle;
             this.hoursTalk = 0.0d;
         }
 
-        public Battery(string model, double hoursIdle, double hoursTalk)
+        public Battery(BatteryType model, double hoursIdle, double hoursTalk)
         {
             this.model = model;
             this.hoursIdle = hoursIdle;
             this.hoursTalk = hoursTalk;
         }
-        public string Model
+        public BatteryType Model
         {
             get { return this.model; }
             set { this.model = value; }
         }
 
+        //Properties
         public double HoursIdle
         {
             get { return this.hoursIdle; }
@@ -58,6 +60,7 @@ namespace MobileDevice
         }
     }
 
+    // BatteryType enum
     public enum BatteryType
     {
         LiIon, NiMH, NiCd

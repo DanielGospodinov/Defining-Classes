@@ -9,29 +9,33 @@ namespace MobileDevice
     class Display
     {
         private double size;
-        private long numberOfColors;
+        private string numberOfColors;
+
+        //Constructors
         public Display()
         {
             this.size = 0.0d;
-            this.numberOfColors = 0L;
+            this.numberOfColors = String.Empty;
         }
         public Display(double size)
         {
             this.size = size;
-            this.numberOfColors = 0L;
+            this.numberOfColors = String.Empty;
         }
-        public Display(double size, long numberOfColors)
+        public Display(double size, string numberOfColors)
         {
             this.size = size;
             this.numberOfColors = numberOfColors;
         }
+
+        //Properties
         public double Size
         {
             get { return this.size; }
             set { this.size = value; }
         }
 
-        public long NumberOfColors
+        public string NumberOfColors
         {
             get { return this.numberOfColors; }
             set { this.numberOfColors = value; }
