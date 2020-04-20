@@ -43,6 +43,9 @@ namespace MobileDevices
             GSM.PrintCalls();
 
             GSM.DeleteCalls(calls[2].DialedPhoneNumber);
+
+            GSM.PrintCalls();
+
             GSM.DeleteCalls(calls[3].DialedPhoneNumber);
 
             GSM.PrintCalls();

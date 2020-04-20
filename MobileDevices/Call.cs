@@ -13,7 +13,7 @@ namespace MobileDevices
         private string dialedPhoneNumber;
         private long duration;
 
-        private const double pricePerMinute = 0.03;
+        private const double pricePerMinute = 0.05;
 
         // Constructors
 
@@ -56,7 +56,7 @@ namespace MobileDevices
 
         public static double GetPrice(Call call)
         {
-            return call.Duration * pricePerMinute;
+            return (call.Duration * pricePerMinute / 60);
         }
     }
 }

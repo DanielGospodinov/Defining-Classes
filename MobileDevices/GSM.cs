@@ -116,8 +116,8 @@ namespace MobileDevices
             for (int i = 0; i < CallHistory.Count; i++)
             {
                 Console.WriteLine("Call number {0}" , i+1);
-                Console.WriteLine("Number : {0}\n" + "Duration : {1}\n" + "Price : {2}",
-                    CallHistory[i].DialedPhoneNumber, CallHistory[i].Duration, Call.GetPrice(CallHistory[i]));
+                Console.WriteLine("Number : {0}\n" + "Time : {1}\n" +"Duration : {2}\n" + "Price : {3:F2} lv",
+                    CallHistory[i].DialedPhoneNumber, CallHistory[i].DateAndTime , TimeSpan.FromSeconds(CallHistory[i].Duration), Call.GetPrice(CallHistory[i]));
                 Console.WriteLine(new string('*',30));
             }
         }
