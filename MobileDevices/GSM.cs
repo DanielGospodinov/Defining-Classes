@@ -75,6 +75,8 @@ namespace MobileDevices
             get { return iPhone4S; }
         }
 
+        private static List<Call> CallHistory = new List<Call>();
+
         //override ToString()
         public override string ToString()
         {
@@ -84,6 +86,40 @@ namespace MobileDevices
 
             return result;
 
+        }
+
+        // Call methods
+
+        public static void AddCall(Call call)
+        {
+            CallHistory.Add(call);
+        }
+
+        public static void DeleteCalls (string dialedPhoneNumber)
+        {
+            for (int i = 0; i < CallHistory.Count; i++)
+            {
+                if (CallHistory[i].DialedPhoneNumber.Equals(dialedPhoneNumber))
+                {
+                    CallHistory.Remove(CallHistory[i]);
+                }
+            }
+        }
+
+        public static void ClearCalls()
+        {
+            CallHistory.Clear();
+        }
+
+        public static void PrintCalls()
+        {
+            for (int i = 0; i < CallHistory.Count; i++)
+            {
+                Console.WriteLine("Call number {0}" , i+1);
+                Console.WriteLine("Number : {0}\n" + "Duration : {1}\n" + "Price : {2}",
+                    CallHistory[i].DialedPhoneNumber, CallHistory[i].Duration, Call.GetPrice(CallHistory[i]));
+                Console.WriteLine(new string('*',30));
+            }
         }
     }
 }
