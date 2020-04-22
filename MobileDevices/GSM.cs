@@ -10,7 +10,7 @@ namespace MobileDevices
     {
         private string model;
         private string manufacturer;
-        private double price;
+        private double? price;
         private string owner;
         private Display display;
         private Battery battery;
@@ -22,8 +22,8 @@ namespace MobileDevices
         {
             this.model = model;
             this.manufacturer = manufacturer;
-            this.price = 0.0d;
-            this.owner = String.Empty;
+            display = new Display();
+            battery = new Battery();
         }
 
         public GSM(string model, string manufacturer, double price, Battery battery, Display display)
@@ -31,9 +31,9 @@ namespace MobileDevices
             this.model = model;
             this.manufacturer = manufacturer;
             this.price = price;
-            this.owner = String.Empty;
             this.battery = battery;
             this.display = display;
+
         }
 
         public GSM(string model, string manufacturer, double price, string owner, Battery battery, Display display)
@@ -59,7 +59,7 @@ namespace MobileDevices
             set { this.manufacturer = value; }
         }
 
-        public double Price
+        public double? Price
         {
             get { return this.price; }
             set { this.price = value; }
@@ -80,44 +80,68 @@ namespace MobileDevices
         //override ToString()
         public override string ToString()
         {
-            string result = String.Format("Model : {0}\n" + "Manufacturer: {1}\n" + "Price: {2} lv\n" + "Owner: {3}\n" +
-                "Battery Model: {4}\n" + "Display size: {5}\"\n" + "Number of collors: {6}",this.model,this.manufacturer,
-                this.price,this.owner,battery.Model,display.Size,display.NumberOfColors);
+            StringBuilder result = new StringBuilder();
 
-            return result;
+            result.Append(String.Format("Model : {0}\n", this.Model));
+            result.Append(String.Format("Manufacturer: {0}\n",this.Manufacturer));
+            if (this.Price != null) result.Append(String.Format("Price: {0} lv\n", this.Price));
+            if (this.Owner != null) result.Append(String.Format("Owner: {0}\n", this.Owner));
+            if (battery.Model != null) result.Append(String.Format("Battery Model: {0}\n", battery.Model));
+            if (display.Size != null) result.Append(String.Format("Display Size: {0}\"\n", display.Size));
+            if (display.NumberOfColors != null) result.Append(String.Format("Colors: {0}\"\n", display.NumberOfColors));
+
+            return result.ToString();
 
         }
 
         // Call methods
 
-        public static void AddCall(Call call)
+        public void AddCall(Call call)
         {
             CallHistory.Add(call);
         }
 
-        public static void DeleteCalls (string dialedPhoneNumber)
+        public void DeleteCalls (string dialedPhoneNumber)
         {
             for (int i = 0; i < CallHistory.Count; i++)
             {
                 if (CallHistory[i].DialedPhoneNumber.Equals(dialedPhoneNumber))
                 {
                     CallHistory.Remove(CallHistory[i]);
+
+                    Console.WriteLine(new string('-', 50));
+                    Console.WriteLine("Call number {0} from {1} is deleted.", i+1, dialedPhoneNumber);
+                    Console.WriteLine(new string('-', 50));
                 }
             }
         }
 
-        public static void ClearCalls()
+        public void ClearCalls()
         {
             CallHistory.Clear();
+
+            Console.WriteLine(new string('-', 50));
+            Console.WriteLine("Call History is deleted!");
+            Console.WriteLine(new string('-', 50));
         }
 
-        public static void PrintCalls()
+        public void GetTotalPrice()
+        {
+            double result = 0;
+
+            for (int i = 0; i < CallHistory.Count; i++)
+            {
+                result += CallHistory[i].GetPrice();
+            }
+            Console.WriteLine("Total Price : {0:F2}",result);
+        }
+        public void PrintCalls()
         {
             for (int i = 0; i < CallHistory.Count; i++)
             {
                 Console.WriteLine("Call number {0}" , i+1);
                 Console.WriteLine("Number : {0}\n" + "Time : {1}\n" +"Duration : {2}\n" + "Price : {3:F2} lv",
-                    CallHistory[i].DialedPhoneNumber, CallHistory[i].DateAndTime , TimeSpan.FromSeconds(CallHistory[i].Duration), Call.GetPrice(CallHistory[i]));
+                    CallHistory[i].DialedPhoneNumber, CallHistory[i].DateAndTime , TimeSpan.FromSeconds(CallHistory[i].Duration), CallHistory[i].GetPrice());
                 Console.WriteLine(new string('*',30));
             }
         }

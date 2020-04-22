@@ -46,17 +46,19 @@ namespace MobileDevices
             get { return this.duration; }
             set { this.duration = value; }
         }
-
-        public double Price
+        public double GetPrice()
         {
-            get { return pricePerMinute; }
-        }
+            double timeInMinutes = (double)this.Duration / 60;
+            double secLowerThenMin = (double)((int)timeInMinutes - (double)timeInMinutes);
 
-        //Methods
-
-        public static double GetPrice(Call call)
-        {
-            return (call.Duration * pricePerMinute / 60);
+            if (secLowerThenMin == 0)
+            {
+                return timeInMinutes * pricePerMinute;
+            }
+            else
+            {
+                return ((int)timeInMinutes * pricePerMinute) + pricePerMinute;
+            }
         }
     }
 }

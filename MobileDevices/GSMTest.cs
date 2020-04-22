@@ -12,11 +12,13 @@ namespace MobileDevices
         {
             //////GSM
             
-            GSM[] gsm = new GSM[3];
+            GSM[] gsm = new GSM[5];
 
             gsm[0] = new GSM("S8","Samsung",900.0,"Ivan",new Battery(BatteryType.LiIon),new Display(5.8,"16M"));
             gsm[1] = new GSM("razr 2019", "Motorola", 1500.0, "Georgi",new Battery(BatteryType.LiIon), new Display(6.3, "16M"));
             gsm[2] = GSM.IPhone4S;
+            gsm[3] = new GSM("Z6 Pro", "Lenovo");
+            gsm[4] = new GSM("P40 Pro", "Huawei",1186.40,new Battery(),new Display(6.58));
 
             for (int i = 0; i < gsm.Length; i++)
             {
@@ -37,22 +39,23 @@ namespace MobileDevices
 
             for (int i = 0; i < calls.Length; i++)
             {
-                GSM.AddCall(calls[i]);
+                gsm[0].AddCall(calls[i]);
             }
 
-            GSM.PrintCalls();
+            gsm[0].PrintCalls();
+            gsm[0].GetTotalPrice();
 
-            GSM.DeleteCalls(calls[2].DialedPhoneNumber);
+            gsm[0].DeleteCalls(calls[2].DialedPhoneNumber);
+            gsm[0].PrintCalls();
+            gsm[0].GetTotalPrice();
 
-            GSM.PrintCalls();
+            gsm[0].DeleteCalls(calls[3].DialedPhoneNumber);
+            gsm[0].PrintCalls();
+            gsm[0].GetTotalPrice();
 
-            GSM.DeleteCalls(calls[3].DialedPhoneNumber);
-
-            GSM.PrintCalls();
-
-            GSM.ClearCalls();
-
-            GSM.PrintCalls();
+            gsm[0].ClearCalls();
+            gsm[0].PrintCalls();
+            gsm[0].GetTotalPrice();
         }
     }
 }

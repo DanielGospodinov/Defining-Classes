@@ -8,19 +8,16 @@ namespace MobileDevices
 {
     class Display
     {
-        private double size;
+        private double? size;
         private string numberOfColors;
 
         //Constructors
         public Display()
         {
-            this.size = 0.0d;
-            this.numberOfColors = String.Empty;
         }
         public Display(double size)
         {
             this.size = size;
-            this.numberOfColors = String.Empty;
         }
         public Display(double size, string numberOfColors)
         {
@@ -29,7 +26,7 @@ namespace MobileDevices
         }
 
         //Properties
-        public double Size
+        public double? Size
         {
             get { return this.size; }
             set { this.size = value; }
